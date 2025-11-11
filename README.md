@@ -18,4 +18,4 @@ When you install the program, it will show up with this icon:
 
 Here is an annotated screenshot the program that opens. 
 
-![application screenshot](annotated_image.png "Annotated screenshot the DZI convertor page.")
+![application screenshot](annotated_image_v2.png "Annotated screenshot the DZI convertor page.")
