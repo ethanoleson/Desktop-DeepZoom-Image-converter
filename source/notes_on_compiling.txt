@@ -1,0 +1,6 @@
+To compile the coverter, I wrote the base funtionality in python, then used a heavy amount of ChatGPT/tkinter to turn it into a GUI.
+
+Using, pyinstaller, I converted the GUI to a .exe.
+
+To create an install file, I used Inno Setup. 
+ 
