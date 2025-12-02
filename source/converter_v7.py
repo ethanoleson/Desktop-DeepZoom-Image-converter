@@ -1,3 +1,5 @@
+### This version should handle issues with .tif to .jpg conversion - EWO Dec. 2025 
+
 import os
 import sys
 import time
