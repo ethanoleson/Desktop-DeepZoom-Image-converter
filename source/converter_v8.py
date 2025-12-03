@@ -48,12 +48,16 @@ class ConsoleRedirect:
     def __init__(self, text_widget):
         self.text_widget = text_widget
         self.text_widget.configure(state='disabled')
+        self.suspend_logging = False  # New flag
+
     def write(self, message):
         self.text_widget.configure(state='normal')
         self.text_widget.insert(tk.END, message)
         self.text_widget.see(tk.END)
         self.text_widget.configure(state='disabled')
-        log_file_stream.write(message)
+        if not self.suspend_logging:
+            log_file_stream.write(message)
+
     def flush(self):
         pass
 
@@ -115,7 +119,13 @@ def save_jpeg():
     os.makedirs(output_dir.get(), exist_ok=True)
     progress_max.set(len(input_files))
     progress_var.set(0)
+
+    prog.config(maximum=len(input_files))
+
     elapsed_total.set("")
+
+    def update_progress(val):
+        progress_var.set(val)
 
     def worker():
         from PIL import ImageFile
@@ -123,6 +133,7 @@ def save_jpeg():
         t0 = time.perf_counter()
         converted = 0
         errors = 0
+
         for i, src in enumerate(input_files, 1):
             try:
                 if not os.path.exists(src):
@@ -139,20 +150,27 @@ def save_jpeg():
                     except: pass
                     im = _ensure_rgb(im)
                     im.save(out_path, "JPEG", quality=95, optimize=True, progressive=True, subsampling=0)
+
                 print(f"[JPEG] Saved: {out_path}")
                 converted += 1
             except Exception as e:
                 errors += 1
                 print(f"[JPEG] Error: {src} => {e}")
-            root.after(0, lambda val=i: progress_var.set(val))
+
+            # ✅ Schedule progress update in main thread
+            root.after(0, update_progress, i)
 
         dt = time.perf_counter() - t0
         print(f"[JPEG] Done. {converted} converted, {errors} errors, {dt:.2f}s elapsed\n")
+
+        # Write logs
         with open(get_log_file_path(), "w", encoding="utf-8") as f:
             f.write(log_file_stream.getvalue())
-        root.after(0, lambda: messagebox.showinfo("JPEG Conversion Done", f"Converted: {converted}\nErrors: {errors}"))
+
+        root.after(0, lambda: messagebox.showinfo("tif converted to jpeg", f"Converted: {converted}\nErrors: {errors}"))
 
     ThreadPoolExecutor(max_workers=1).submit(worker)
+
 
 # === DeepZoom ===
 DZ_TILE_SIZE = 256
@@ -189,6 +207,8 @@ def create_deepzoom():
     progress_max.set(len(input_files))
     progress_var.set(0)
 
+    prog.config(maximum=len(input_files))
+
     def worker():
         t0 = time.perf_counter()
         creator = _dz_make_creator()
@@ -206,9 +226,10 @@ def create_deepzoom():
         print(f"[DZI] Done. Created: {success}, Elapsed: {dt_total:.2f}s\n")
         with open(get_log_file_path(), "w", encoding="utf-8") as f:
             f.write(log_file_stream.getvalue())
-        root.after(0, lambda: messagebox.showinfo("DZI Done", f"Created: {success}, Time: {dt_total:.2f}s"))
+        root.after(0, lambda: messagebox.showinfo("DZI creation done", f"Created: {success}, Time: {dt_total:.2f}s"))
 
     ThreadPoolExecutor(max_workers=1).submit(worker)
+
 
 # === UI ===
 row = 0
@@ -227,7 +248,8 @@ row += 1
 
 # Progress
 prog = ttk.Progressbar(root, orient="horizontal", mode="determinate", length=400,
-                       maximum=progress_max.get(), variable=progress_var)
+                       variable=progress_var)
+
 prog.grid(row=row, column=0, columnspan=2, pady=8)
 row += 1
 
@@ -238,6 +260,10 @@ sys.stdout = ConsoleRedirect(console)
 
 root.columnconfigure(1, weight=1)
 root.rowconfigure(row, weight=1)
+
+redir = ConsoleRedirect(console)
+sys.stdout = redir
+redir.suspend_logging = True
 
 print("""
 
@@ -262,5 +288,5 @@ eoleson (at) uark (dot) edu.
                                                                                                                 
 === DeepZoom Converter Ready ===
 """)
-
+redir.suspend_logging = False
 root.mainloop()
