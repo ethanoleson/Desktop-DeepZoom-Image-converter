@@ -157,7 +157,7 @@ def save_jpeg():
                 errors += 1
                 print(f"[JPEG] Error: {src} => {e}")
 
-            # ✅ Schedule progress update in main thread
+    
             root.after(0, update_progress, i)
 
         dt = time.perf_counter() - t0
@@ -233,34 +233,52 @@ def create_deepzoom():
 
 # === UI ===
 row = 0
-tk.Button(root, text="Select Input Image(s)", command=choose_input).grid(row=row, column=0)
-tk.Entry(root, textvariable=input_summary, width=60).grid(row=row, column=1)
-row += 1
-tk.Button(root, text="Choose Output Folder", command=choose_output).grid(row=row, column=0)
-tk.Entry(root, textvariable=output_dir, width=60).grid(row=row, column=1)
-row += 1
-tk.Button(root, text="Save JPEG(s)", command=save_jpeg).grid(row=row, column=0)
-tk.Label(root, textvariable=status_jpeg).grid(row=row, column=1, sticky="w")
-row += 1
-tk.Button(root, text="Create DeepZoom (.dzi)", command=create_deepzoom).grid(row=row, column=0)
-tk.Label(root, textvariable=status_dz).grid(row=row, column=1, sticky="w")
+btn_in = tk.Button(root, text="Select Input Image(s)", command=choose_input)
+btn_in.grid(row=row, column=0, padx=8, pady=6, sticky="ew")
+entry_in = tk.Entry(root, textvariable=input_summary, width=70)
+entry_in.grid(row=row, column=1, padx=8, pady=6, sticky="ew")
 row += 1
 
-# Progress
-prog = ttk.Progressbar(root, orient="horizontal", mode="determinate", length=400,
-                       variable=progress_var)
+btn_out = tk.Button(root, text="Choose Output Folder", command=choose_output)
+btn_out.grid(row=row, column=0, padx=8, pady=6, sticky="ew")
+entry_out = tk.Entry(root, textvariable=output_dir, width=70)
+entry_out.grid(row=row, column=1, padx=8, pady=6, sticky="ew")
+row += 1
 
-prog.grid(row=row, column=0, columnspan=2, pady=8)
+btn_jpeg = tk.Button(root, text="Save JPEG(s)", command=save_jpeg)
+btn_jpeg.grid(row=row, column=0, padx=8, pady=10, sticky="ew")
+lbl_jpeg_text = tk.Label(root, text="Converts .tif to jpeg, for use with SEM", anchor="w")
+lbl_jpeg_text.grid(row=row, column=1, padx=8, pady=10, sticky="w")
+row += 1
+
+btn_dz = tk.Button(root, text="Create DeepZoom (.dzi) for Selection", command=create_deepzoom)
+btn_dz.grid(row=row, column=0, padx=8, pady=10, sticky="ew")
+lbl_dz_text = tk.Label(root, text="Creates .dzi from a .jpg.", anchor="w")
+lbl_dz_text.grid(row=row, column=1, padx=8, pady=10, sticky="w")
+row += 1
+
+# Progress + elapsed
+ttk.Label(root, text="Progress:").grid(row=row, column=0, sticky="w", padx=8)
+prog = ttk.Progressbar(root, orient="horizontal", mode="determinate",
+                       maximum=progress_max.get(), variable=progress_var, length=400)
+prog.grid(row=row, column=1, sticky="w", padx=8, pady=2)
+def _sync_prog_max(*_):
+    prog.config(maximum=progress_max.get())
+progress_max.trace_add("write", _sync_prog_max)
+elapsed_lbl = ttk.Label(root, textvariable=elapsed_total)
+elapsed_lbl.grid(row=row, column=1, sticky="e", padx=8)
 row += 1
 
 # Console
-console = scrolledtext.ScrolledText(root, height=15, bg="black", fg="lime", insertbackground="white")
-console.grid(row=row, column=0, columnspan=2, padx=8, pady=6, sticky="nsew")
-sys.stdout = ConsoleRedirect(console)
+tk.Label(root, text="Console Output:").grid(row=row, column=0, columnspan=2, sticky="w", padx=8)
+row += 1
+console_box = scrolledtext.ScrolledText(root, height=16, wrap='word', bg="#111", fg="#ffd700", insertbackground="#0f0")
+console_box.grid(row=row, column=0, columnspan=2, padx=8, pady=6, sticky="nsew")
+sys.stdout = ConsoleRedirect(console_box)
 
 root.columnconfigure(1, weight=1)
 root.rowconfigure(row, weight=1)
-
+###
 redir = ConsoleRedirect(console)
 sys.stdout = redir
 redir.suspend_logging = True
