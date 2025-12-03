@@ -4,3 +4,7 @@ Using, pyinstaller, I converted the GUI to a .exe.
 
 To create an install file, I used Inno Setup. 
  
+
+ pyinstaller script: 
+
+ pyinstaller --onefile --noconsole --clean --icon=converter_icon.ico --hidden-import pandas --hidden-import openpyxl converter_v8.py
