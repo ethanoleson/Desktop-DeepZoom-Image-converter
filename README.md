@@ -15,7 +15,7 @@ This program does not require python to be installed nor does it require you to 
 
 
 
-To install, download "dzi-converter-install" and follow the instructions. If you work at a univeristy or institution that does not allow programs to be installed without administrator access, this install is designed to bypass it ... or so I am told (shhh). 
+To install, download "Deep-zoom-image-converter_v2.exe" and follow the instructions. If you work at a univeristy or institution that does not allow programs to be installed without administrator access, this install is designed to bypass it ... or so I am told (shhh). 
 
 When you install the program, it will show up with this icon:
 
