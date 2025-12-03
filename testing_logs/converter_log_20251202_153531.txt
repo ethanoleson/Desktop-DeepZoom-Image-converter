@@ -1,0 +1,81 @@
+
+
+
+Welcome to the DeepZoom Image Converter. 
+This software converts tifs to jpegs and
+jpegs to dzi.
+
+DeepZoom settings: tile=256, overlap=1, quality=0.9, filter=LANCZOS.
+
+For more information, refer to the documentation
+on the GitHub page or email Ethan Oleson: 
+eoleson (at) uark (dot) edu. 
+
+░▒▓███████▓▒░░▒▓████████▓▒░▒▓████████▓▒░▒▓███████▓▒░▒▓████████▓▒░░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓██████████████▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░     ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓██▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░ ░▒▓██████▓▒░ ░▒▓███████▓▒░  ░▒▓██▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓██▓▒░    ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░     ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+░▒▓███████▓▒░░▒▓████████▓▒░▒▓████████▓▒░▒▓█▓▒░     ░▒▓████████▓▒░░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░ 
+                                                                                                                
+=== DeepZoom Converter Ready ===
+
+[Input] 1 files selected
+
+[Output] Folder: C:/Users/eoles/OneDrive/Desktop
+
+[JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => 
+
+
+
+
+
+[JPEG] Done. 0 converted, 1 errors, 338.45s elapsed
+[JPEG] Done. 0 converted, 1 errors, 339.68s elapsed
+[JPEG] Done. 0 converted, 1 errors, 338.77s elapsed
+[JPEG] Done. 0 converted, 1 errors, 340.21s elapsed
+[JPEG] Done. 0 converted, 1 errors, 340.92s elapsed
+[JPEG] Done. 0 converted, 1 errors, 341.23s elapsed
+
+
+
+
+
+
+[JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => encoder error -2 when writing image file[JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => [JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => encoder error -2 when writing image file[JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => encoder error -2 when writing image file[JPEG] Error: Z:/Oleson_thesis/zircon_mount_images/Multispot_BSU/small_mount.tif => encoder error -2 when writing image file
+
+
+
+
+
+
+
+
+
+
+[JPEG] Done. 0 converted, 1 errors, 391.40s elapsed
+[JPEG] Done. 0 converted, 1 errors, 392.30s elapsed
+[JPEG] Done. 0 converted, 1 errors, 394.42s elapsed
+[JPEG] Done. 0 converted, 1 errors, 391.04s elapsed
+[JPEG] Done. 0 converted, 1 errors, 391.74s elapsed
+[JPEG] Done. 0 converted, 1 errors, 413.27s elapsed
+[JPEG] Done. 0 converted, 1 errors, 390.89s elapsed
+[JPEG] Done. 0 converted, 1 errors, 391.22s elapsed
+[JPEG] Done. 0 converted, 1 errors, 393.53s elapsed
+[JPEG] Done. 0 converted, 1 errors, 391.94s elapsed
+[JPEG] Done. 0 converted, 1 errors, 393.19s elapsed
+
+
+
+
+
+
+
+
+
+
+
+[JPEG] Saved: C:/Users/eoles/OneDrive/Desktop\small_mount.jpg
+[JPEG] Done. 1 converted, 0 errors, 459.83s elapsed
+
