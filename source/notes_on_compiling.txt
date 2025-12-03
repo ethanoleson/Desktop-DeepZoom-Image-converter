@@ -3,8 +3,10 @@ To compile the coverter, I wrote the base funtionality in python, then used a he
 Using, pyinstaller, I converted the GUI to a .exe.
 
 To create an install file, I used Inno Setup. 
- 
 
- pyinstaller script: 
+December 3rd, 2025: 
+The current version is compiled on v8 of the python scripts.
 
- pyinstaller --onefile --noconsole --clean --icon=converter_icon.ico --hidden-import pandas --hidden-import openpyxl converter_v8.py
+pyinstaller script: 
+
+pyinstaller --onefile --noconsole --clean --icon=converter_icon.ico --hidden-import pandas --hidden-import openpyxl converter_v8.py
