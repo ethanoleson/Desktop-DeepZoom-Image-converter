@@ -278,8 +278,9 @@ sys.stdout = ConsoleRedirect(console_box)
 
 root.columnconfigure(1, weight=1)
 root.rowconfigure(row, weight=1)
+
 ###
-redir = ConsoleRedirect(console)
+redir = ConsoleRedirect(console_box)
 sys.stdout = redir
 redir.suspend_logging = True
 
